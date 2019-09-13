@@ -1,8 +1,9 @@
 <script>
-	import {UnlockMonsters, BlockMonsters} from './store.js'
+	import {UnlockMonsters, BlockMonsters, Quests} from './store.js'
 	import MonsterCard from './components/MonsterCard.svelte'
+	import QuestCard from './components/QuestCard.svelte'
 
-	let unlockMonsters, blockMonsters = []
+	let unlockMonsters, blockMonsters, quests = []
 
 	UnlockMonsters.subscribe(value => {
 		unlockMonsters = value
@@ -10,6 +11,10 @@
 
 	BlockMonsters.subscribe(value => {
 		blockMonsters = value
+	})
+
+	Quests.subscribe(value => {
+		quests = value
 	})
 
 	let unlockGroup = []
@@ -119,8 +124,13 @@
 			</fieldset>
 
 			<fieldset>
-				<h2>Quests</h2>
+				<h2 class="field-header">Quests</h2>
 				<ul>
+					{#each quests as value}
+						<li>
+							<QuestCard quest="{value}" toggled="{value.toggled}"/>
+						</li>
+					{/each}
 				</ul>
 			</fieldset>
 			

@@ -16,5 +16,6 @@ export const BlockMonsters = writable([
 ])
 
 export const Quests = writable([
-  {name: 'Priest in Peril', monsters: ['Gargoyles'], toggled: false}
+  {name: 'Priest in Peril', monsters: ['Gargoyles'], toggled: false},
+  {name: 'Cabin Fever', monsters: ['Cave horror'], toggled: false}
 ])

@@ -2,22 +2,22 @@
 	export let quest
 	export let toggled
 
-	function toggleUnlock() {
+	function toggle() {
     toggled = !toggled
   }
 </script>
 
 <style>
 	.checkbox-button {
+    position: relative;
 		display: flex;
-		flex-flow: column;
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		width: 10rem;
-		height: 12rem;
 		padding: 1rem;
-		margin: 0.5rem 0;
+    margin: 0.5rem 0;
+    width: 20rem;
+    max-width: 100%;
 
 		text-align: center;
 		background: #fafafa;
@@ -39,23 +39,27 @@
 		height: 0;
 		margin: 0;
 		position: absolute;
-	}
+  }
+  
+  .check-mark {
+    position: absolute;
+    margin: auto 0;
+    left: 1rem;
+    height: 1.5rem;
+    width: auto;
+  }
 
 	.blocked {
 		border: 1px #900 solid;
 		box-shadow: 0 1px 5px rgba(153,0,0,.025), 0 2px 10px rgba(153,0,0,.1);
 		color: #900;
 	}
-
-	.monster-icon {
-		height: 4rem;
-		width: auto;
-		margin-bottom: 0.5rem;
-	}
 </style>
 
-<label class="checkbox-button" class:blocked="{toggled}" on:click|preventDefault={toggleUnlock}>
+<label class="checkbox-button" class:blocked="{toggled}" on:click|preventDefault={toggle}>
+  {#if toggled}
+    <img class="check-mark" src="/images/check-icon.svg" alt="Check mark">
+  {/if}
 	<input type="checkbox" value="">
-	<img class="monster-icon" src={monster.image} alt="{monster.name}">
-	<span>{monster.name}</span>
+  <span>{quest.name}</span>
 </label>

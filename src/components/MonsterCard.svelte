@@ -2,13 +2,14 @@
 	export let monster
 	export let toggled
 
-	function toggleUnlock() {
+	function toggle() {
     toggled = !toggled
   }
 </script>
 
 <style>
 	.checkbox-button {
+		position: relative;
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -47,6 +48,14 @@
 		color: #900;
 	}
 
+	.check-mark {
+		position: absolute;
+    height: 1.5rem;
+    width: auto;
+		top: 0.5rem;
+		left: 1rem;
+  }
+
 	.monster-icon {
 		height: 4rem;
 		width: auto;
@@ -54,7 +63,10 @@
 	}
 </style>
 
-<label class="checkbox-button" class:blocked="{toggled}" on:click|preventDefault={toggleUnlock}>
+<label class="checkbox-button" class:blocked="{toggled}" on:click|preventDefault={toggle}>
+	{#if toggled}
+		<img class="check-mark" src="/images/check-icon.svg" alt="Check mark">
+	{/if}
 	<input type="checkbox" value="">
 	<img class="monster-icon" src={monster.image} alt="{monster.name}">
 	<span>{monster.name}</span>
