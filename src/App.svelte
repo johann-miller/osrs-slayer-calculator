@@ -31,6 +31,10 @@
 		padding: 0 1rem;
 	}
 
+	.field-header {
+		margin-bottom: 1rem;
+	}
+
 	header {
 		display: flex;
 		flex-flow: column;
@@ -70,12 +74,12 @@
 	<section>
 		<form action="" onsubmit="event.preventDefault()">
 			<fieldset>
-				<legend>Slayer level</legend>
+				<h2 class="field-header">Slayer level</h2>
 				<input class="slayer-level" type="number" name="slayer-level" min="1" max="99" maxlength="2">
 			</fieldset>
 			
 			<fieldset>
-				<legend>Unlocked tasks</legend>
+				<h2 class="field-header">Unlocked</h2>
 				<ul>
 					{#each unlocks as unlock, i}
 						<li>
@@ -86,7 +90,7 @@
 			</fieldset>
 			
 			<fieldset>
-				<legend>Blocked tasks</legend>
+				<h2 class="field-header">Blocked</h2>
 				<BlockField />
 				<BlockField />
 				<BlockField />
