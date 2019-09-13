@@ -16,8 +16,7 @@
 		position: relative;
 		padding: 1rem;
     margin: 0.5rem 0;
-    width: 20rem;
-    max-width: 100%;
+    width: 100%;
 
 		text-align: center;
 		background: #fafafa;
