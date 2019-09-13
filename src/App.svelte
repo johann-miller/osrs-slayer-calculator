@@ -16,8 +16,6 @@
 	Quests.subscribe(value => {
 		quests = value
 	})
-
-	let unlockGroup = []
 </script>
 
 <style>
@@ -35,10 +33,10 @@
 	}
 
 	main {
+		position: relative;
 		display: flex;
 		flex-flow: column;
 		align-items: center;
-		padding: 3rem 1rem;
 	}
 
 	form {
@@ -60,6 +58,7 @@
 		align-items: center;
 		max-width: 40rem;
 		padding: 2rem 1rem;
+		margin-bottom: 2rem;
 
 		border-bottom: 1px #e7e7e7 solid;
 	}
@@ -73,6 +72,11 @@
 	}
 
 	section {
+		position: absolute;
+		top: 0;
+		display: flex;
+		flex-flow: column;
+		align-items: center;
 		margin-top: 2rem;
 	}
 
@@ -84,17 +88,28 @@
 		width: 5rem;
 		text-align: center;
 	}
+
+	.toggle-options {
+		position: fixed;
+		bottom: 1.5rem;
+		right: 1.5rem;
+		height: 2.5rem;
+		border-radius: 1.25rem;
+		background: #900;
+		color: #fafafa;
+	}
 	
 </style>
 
 <main>
-	<header>
-		<h1>Slayer calculator</h1>
-		<p>
-			A simple app that calculates the chances of each slayer assignment
-		</p>
+	
+	<section class="options">
+		<header>
+			<h1>Slayer calculator</h1>
+			<p>
+				A simple app that calculates the chances of each slayer assignment
+			</p>
 	</header>
-	<section>
 		<form action="" onsubmit="event.preventDefault()">
 			<fieldset>
 				<h2 class="field-header">Slayer level</h2>
@@ -136,4 +151,9 @@
 			
 		</form>
 	</section>
+	<section class="results">
+	</section>
+	<button class="toggle-options">
+		Results
+	</button>
 </main>
