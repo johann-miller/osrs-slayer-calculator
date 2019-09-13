@@ -1,0 +1,61 @@
+<script>
+	export let quest
+	export let toggled
+
+	function toggleUnlock() {
+    toggled = !toggled
+  }
+</script>
+
+<style>
+	.checkbox-button {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		width: 10rem;
+		height: 12rem;
+		padding: 1rem;
+		margin: 0.5rem 0;
+
+		text-align: center;
+		background: #fafafa;
+		border: 1px #e7e7e7 solid;
+		border-radius: 0.3rem;
+		color: inherit;
+		cursor: pointer;
+		user-select: none;
+		transition: all 0.1s ease-in-out;
+	}
+
+	.checkbox-button:first-child {
+		margin-top: 0;
+	}
+
+	.checkbox-button input[type="checkbox"] {
+		opacity: 0;
+		width: 0;
+		height: 0;
+		margin: 0;
+		position: absolute;
+	}
+
+	.blocked {
+		border: 1px #900 solid;
+		box-shadow: 0 1px 5px rgba(153,0,0,.025), 0 2px 10px rgba(153,0,0,.1);
+		color: #900;
+	}
+
+	.monster-icon {
+		height: 4rem;
+		width: auto;
+		margin-bottom: 0.5rem;
+	}
+</style>
+
+<label class="checkbox-button" class:blocked="{toggled}" on:click|preventDefault={toggleUnlock}>
+	<input type="checkbox" value="">
+	<img class="monster-icon" src={monster.image} alt="{monster.name}">
+	<span>{monster.name}</span>
+</label>

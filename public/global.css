@@ -34,13 +34,13 @@ h1 {
 }
 
 a, p, span, input, textarea {
-	font-weight: 400;
+	font-weight: 300;
 	color: #404e5b;
 	line-height: 1.5;
 }
 
 label {
-	font-weight: 400;
+	font-weight: 300;
 	color: #0a1924;
 	line-height: 1.5;
 	margin: 1rem 0 0.5rem 0;
@@ -52,7 +52,6 @@ fieldset {
 	align-items: center;
 	padding: 1rem;
 	margin: 1rem 0;
-	width: 100%;
 	border: 1px #e7e7e7 solid;
 	border-radius: 1rem;
 	box-shadow: 0 1px 5px rgba(154,160,185,.05), 0 2px 10px rgba(166,173,201,.2);

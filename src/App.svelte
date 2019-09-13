@@ -1,20 +1,34 @@
 <script>
-	import Unlock from './components/Unlock.svelte'
-	import BlockField from './components/BlockField.svelte'
+	import {UnlockMonsters, BlockMonsters} from './store.js'
+	import MonsterCard from './components/MonsterCard.svelte'
 
-	let unlocks = [
-		{name: 'Aviansies', unlocked: false},
-		{name: 'Bosses', unlocked: false},
-		{name: 'Lizardmen', unlocked: false},
-		{name: 'Mithril dragons', unlocked: false},
-		{name: 'Red dragons', unlocked: false},
-		{name: 'TzHaar', unlocked: false}
-	]
+	let unlockMonsters, blockMonsters = []
+
+	UnlockMonsters.subscribe(value => {
+		unlockMonsters = value
+	})
+
+	BlockMonsters.subscribe(value => {
+		blockMonsters = value
+	})
 
 	let unlockGroup = []
 </script>
 
 <style>
+	.monster-icons {
+		display: flex;
+		flex-flow: row-;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		max-width: 100%;
+	}
+
+	.monster-icons > li {
+		margin: 0.5rem;
+	}
+
 	main {
 		display: flex;
 		flex-flow: column;
@@ -26,7 +40,7 @@
 		display: flex;
 		flex-flow: column;
 		align-items: center;
-		width: 35rem;
+		width: 50rem;
 		max-width: 100vw;
 		padding: 0 1rem;
 	}
@@ -57,6 +71,10 @@
 		margin-top: 2rem;
 	}
 
+	fieldset {
+		width: 100%;
+	}
+
 	.slayer-level {
 		width: 5rem;
 		text-align: center;
@@ -79,28 +97,31 @@
 			</fieldset>
 			
 			<fieldset>
-				<h2 class="field-header">Unlocked</h2>
-				<ul>
-					{#each unlocks as unlock, i}
+				<h2 class="field-header">Blocked</h2>
+				<ul class="monster-icons">
+					{#each blockMonsters as value}
 						<li>
-							<Unlock unlock={unlock}/>
+							<MonsterCard monster="{value}" toggled="{value.toggled}"/>
 						</li>
 					{/each}
 				</ul>
 			</fieldset>
-			
+
 			<fieldset>
-				<h2 class="field-header">Blocked</h2>
-				<BlockField />
-				<BlockField />
-				<BlockField />
-				<BlockField />
-				<BlockField />
-				<BlockField />
-				<label>
-					<input type="checkbox" value="Fossil Island wyvern">
-					Purchased "Stop the Wyvern"
-				</label>
+				<h2 class="field-header">Unlocked</h2>
+				<ul class="monster-icons">
+					{#each unlockMonsters as value}
+					<li>
+						<MonsterCard monster="{value}" toggled="{value.toggled}"/>
+					</li>
+					{/each}
+				</ul>
+			</fieldset>
+
+			<fieldset>
+				<h2>Quests</h2>
+				<ul>
+				</ul>
 			</fieldset>
 			
 		</form>

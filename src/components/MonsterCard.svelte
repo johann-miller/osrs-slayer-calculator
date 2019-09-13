@@ -1,24 +1,25 @@
 <script>
-  export let unlock
+	export let monster
+	export let toggled
 
-  function toggleUnlock() {
-    unlock.unlocked = !unlock.unlocked
-    console.log(unlock.unlocked)
+	function toggleUnlock() {
+    toggled = !toggled
   }
-
-  // TODO store checked unlock in a store
 </script>
 
 <style>
-  .checkbox-button {
+	.checkbox-button {
 		display: flex;
+		flex-flow: column;
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		width: 100%;
-		padding: 0.5rem;
+		width: 10rem;
+		height: 12rem;
+		padding: 1rem;
 		margin: 0.5rem 0;
 
+		text-align: center;
 		background: #fafafa;
 		border: 1px #e7e7e7 solid;
 		border-radius: 0.3rem;
@@ -40,13 +41,22 @@
 		position: absolute;
 	}
 
-	.unlocked {
+	.blocked {
 		border: 1px #900 solid;
 		box-shadow: 0 1px 5px rgba(153,0,0,.025), 0 2px 10px rgba(153,0,0,.1);
 		color: #900;
 	}
+
+	.monster-icon {
+		height: 4rem;
+		width: auto;
+		margin-bottom: 0.5rem;
+	}
 </style>
 
-<label class="checkbox-button" class:unlocked={unlock.unlocked} on:click|preventDefault={toggleUnlock}>
-	<input type="checkbox" value="{unlock.name}">{unlock.name}
+<label class="checkbox-button" class:blocked="{toggled}" on:click|preventDefault={toggleUnlock}>
+	<input type="checkbox" value="">
+	<img class="monster-icon" src={monster.image} alt="{monster.name}">
+	<span>{monster.name}</span>
 </label>
+
