@@ -24,6 +24,12 @@
 		border-radius: 0.3rem;
 		color: inherit;
 		cursor: pointer;
+		user-select: none;
+		transition: all 0.1s ease-in-out;
+	}
+
+	.checkbox-button:first-child {
+		margin-top: 0;
 	}
 
 	.checkbox-button input[type="checkbox"] {
@@ -35,8 +41,8 @@
 	}
 
 	.unlocked {
-		background: #f9e9cc;
-		border: 2px #e59400 solid;
+		background: #d4eacc;
+		border: 2px #6ab74c solid;
 	}
 </style>
 
