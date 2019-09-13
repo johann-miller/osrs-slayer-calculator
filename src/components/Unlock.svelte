@@ -20,7 +20,7 @@
 		margin: 0.5rem 0;
 
 		background: #fafafa;
-		border: 2px #e7e7e7 solid;
+		border: 1px #e7e7e7 solid;
 		border-radius: 0.3rem;
 		color: inherit;
 		cursor: pointer;
@@ -41,8 +41,9 @@
 	}
 
 	.unlocked {
-		background: #d4eacc;
-		border: 2px #6ab74c solid;
+		border: 1px #900 solid;
+		box-shadow: 0 1px 5px rgba(153,0,0,.025), 0 2px 10px rgba(153,0,0,.1);
+		color: #900;
 	}
 </style>
 

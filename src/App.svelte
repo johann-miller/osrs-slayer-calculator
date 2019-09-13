@@ -1,5 +1,6 @@
 <script>
-	import Unlock from './components/unlock.svelte'
+	import Unlock from './components/Unlock.svelte'
+	import BlockField from './components/BlockField.svelte'
 
 	let unlocks = [
 		{name: 'Aviansies', unlocked: false},
@@ -8,51 +9,6 @@
 		{name: 'Mithril dragons', unlocked: false},
 		{name: 'Red dragons', unlocked: false},
 		{name: 'TzHaar', unlocked: false}
-	]
-
-	let monsters = [
-		'Crawling hand',
-		'Cave bug',
-		'Cave crawler',
-		'Banshee',
-		'Cave slime',
-		'Rockslug',
-		'Desert lizard',
-		'Cockatrice',
-		'Pyrefiend',
-		'Mogre',
-		'Harpie bug swarm',
-		'Wall beast',
-		'Killerwatt',
-		'Molanisk',
-		'Basilisk',
-		'Terror dog',
-		'Sea sneak',
-		'Fever spider',
-		'Sulphur lizard',
-		'Infernal mage',
-		'Brine rat',
-		'Bloodveld',
-		'Jelly',
-		'Turoth',
-		'Mutated zygomite',
-		'Cave horror',
-		'Aberrant spectre',
-		'Wyrm',
-		'Spiritual creature',
-		'Dust devil',
-		'Fossil Island wyvern',
-		'Kurask',
-		'Skeletal wyvern',
-		'Gargoyle',
-		'Black dragon',
-		'Nechryael',
-		'Drake',
-		'Abyssal demon',
-		'Cave kraken',
-		'Dark beast',
-		'Smoke devil',
-		'Hydra'
 	]
 
 	let unlockGroup = []
@@ -71,7 +27,8 @@
 		flex-flow: column;
 		align-items: center;
 		width: 35rem;
-		max-width: 100%;
+		max-width: 100vw;
+		padding: 0 1rem;
 	}
 
 	header {
@@ -130,21 +87,16 @@
 			
 			<fieldset>
 				<legend>Blocked tasks</legend>
-				<input list="monsters">
-				<input list="monsters">
-				<input list="monsters">
-				<input list="monsters">
-				<input list="monsters">
-				<input list="monsters">
+				<BlockField />
+				<BlockField />
+				<BlockField />
+				<BlockField />
+				<BlockField />
+				<BlockField />
 				<label>
-					<input type="checkbox">
+					<input type="checkbox" value="Fossil Island wyvern">
 					Purchased "Stop the Wyvern"
 				</label>
-				<datalist id="monsters">
-					{#each monsters as monster}
-						<option value="{monster}"></option>
-					{/each}
-				</datalist>
 			</fieldset>
 			
 		</form>
