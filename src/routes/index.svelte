@@ -1,7 +1,7 @@
 <script>
-	import {UnlockMonsters, BlockMonsters, Quests} from './store.js'
-	import MonsterCard from './components/MonsterCard.svelte'
-	import QuestCard from './components/QuestCard.svelte'
+	import {UnlockMonsters, BlockMonsters, Quests} from '../store.js'
+	import MonsterCard from '../components/MonsterCard.svelte'
+	import QuestCard from '../components/QuestCard.svelte'
 
 	let unlockMonsters, blockMonsters, quests = []
 	let showResults = false
@@ -24,16 +24,6 @@
 </script>
 
 <style>
-	@keyframes move-left {
-		from {right: 0}
-		to {right: 100%;}
-	}
-
-	@keyframes move-right {
-		from {right: 0}
-		to {right: -100%;}
-	}
-
 	.monster-icons {
 		display: flex;
 		flex-flow: row-;
@@ -45,14 +35,6 @@
 
 	.monster-icons > li {
 		margin: 0.5rem;
-	}
-
-	main {
-		position: relative;
-		display: flex;
-		flex-flow: column;
-		align-items: center;
-		width: 100%;
 	}
 
 	form {
@@ -159,63 +141,61 @@
 	}
 </style>
 
-<main>
-	<section class="options" class:hide-options="{showResults}">
-	<div class="slider-container">
-		<header>
-			<h1>Slayer calculator</h1>
-			<p>
-				A simple app that calculates the chances of each slayer assignment
-			</p>
-		</header>
-		<form action="" onsubmit="event.preventDefault()">
-			<fieldset>
-				<h2 class="field-header">Slayer level</h2>
-				<input class="slayer-level" type="number" name="slayer-level" min="1" max="99" maxlength="2">
-			</fieldset>
-			
-			<fieldset>
-				<h2 class="field-header">Blocked</h2>
-				<ul class="monster-icons">
-					{#each blockMonsters as value}
-						<li>
-							<MonsterCard monster="{value}" toggled="{value.toggled}"/>
-						</li>
-					{/each}
-				</ul>
-			</fieldset>
-
-			<fieldset>
-				<h2 class="field-header">Unlocked</h2>
-				<ul class="monster-icons">
-					{#each unlockMonsters as value}
+<section class="options" class:hide-options="{showResults}">
+<div class="slider-container">
+	<header>
+		<h1>Slayer calculator</h1>
+		<p>
+			A simple app that calculates the chances of each slayer assignment
+		</p>
+	</header>
+	<form action="" onsubmit="event.preventDefault()">
+		<fieldset>
+			<h2 class="field-header">Slayer level</h2>
+			<input class="slayer-level" type="number" name="slayer-level" min="1" max="99" maxlength="2">
+		</fieldset>
+		
+		<fieldset>
+			<h2 class="field-header">Blocked</h2>
+			<ul class="monster-icons">
+				{#each blockMonsters as value}
 					<li>
 						<MonsterCard monster="{value}" toggled="{value.toggled}"/>
 					</li>
-					{/each}
-				</ul>
-			</fieldset>
+				{/each}
+			</ul>
+		</fieldset>
 
-			<fieldset>
-				<h2 class="field-header">Quests</h2>
-				<ul class="quest-icons">
-					{#each quests as value}
-						<li>
-							<QuestCard quest="{value}" toggled="{value.toggled}"/>
-						</li>
-					{/each}
-				</ul>
-			</fieldset>
-		</form>
-	</div>
-	</section>
-	<section class="results">
-		<header>
-			<h1>Slayer calculator</h1>
-			<p>Results of your provided information</p>
-		</header>
-	</section>
-	<button class="toggle-results" on:click|preventDefault={toggleResults}>
-		Results
-	</button>
-</main>
+		<fieldset>
+			<h2 class="field-header">Unlocked</h2>
+			<ul class="monster-icons">
+				{#each unlockMonsters as value}
+				<li>
+					<MonsterCard monster="{value}" toggled="{value.toggled}"/>
+				</li>
+				{/each}
+			</ul>
+		</fieldset>
+
+		<fieldset>
+			<h2 class="field-header">Quests</h2>
+			<ul class="quest-icons">
+				{#each quests as value}
+					<li>
+						<QuestCard quest="{value}" toggled="{value.toggled}"/>
+					</li>
+				{/each}
+			</ul>
+		</fieldset>
+	</form>
+</div>
+</section>
+<section class="results">
+	<header>
+		<h1>Slayer calculator</h1>
+		<p>Results of your provided information</p>
+	</header>
+</section>
+<button class="toggle-results" on:click|preventDefault={toggleResults}>
+	Results
+</button>
