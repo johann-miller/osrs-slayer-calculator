@@ -20,6 +20,7 @@
 
 	function toggleResults() {
 		showResults = !showResults
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 </script>
 
@@ -111,9 +112,14 @@
 		z-index: -1;
 		background: #900;
 		color: #fcfcfc;
+		min-height: 100vh;
 	}
 
 	.results h1 {
+		color: #fcfcfc;
+	}
+
+	.results p {
 		color: #fcfcfc;
 	}
 
@@ -138,6 +144,19 @@
 		border-radius: 1.25rem;
 		background: #900;
 		color: #fcfcfc;
+	}
+
+	.toggle-results::before {
+		content: 'Results';
+	}
+
+	.options-button {
+		background: #fcfcfc;
+		color: #900;
+	}
+
+	.options-button::before {
+		content: 'Options';
 	}
 </style>
 
@@ -193,9 +212,7 @@
 <section class="results">
 	<header>
 		<h1>Slayer calculator</h1>
-		<p>Results of your provided information</p>
+		<p>Results based on your information</p>
 	</header>
 </section>
-<button class="toggle-results" on:click|preventDefault={toggleResults}>
-	Results
-</button>
+<button class="toggle-results" class:options-button="{showResults}" on:click|preventDefault={toggleResults}></button>
