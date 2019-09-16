@@ -2,9 +2,10 @@
 	import {UnlockMonsters, BlockMonsters, Quests} from '../store.js'
 	import MonsterCard from '../components/MonsterCard.svelte'
 	import QuestCard from '../components/QuestCard.svelte'
+	import SlayerMasterCard from '../components/SlayerMasterCard.svelte'
 
 	let unlockMonsters, blockMonsters, quests = []
-	let showResults = false
+	let showResults = true
 
 	UnlockMonsters.subscribe(value => {
 		unlockMonsters = value
@@ -21,6 +22,7 @@
 	function toggleResults() {
 		showResults = !showResults
 		window.scrollTo({ top: 0, behavior: 'smooth' });
+		console.log('bloop')
 	}
 </script>
 
@@ -38,13 +40,17 @@
 		margin: 0.5rem;
 	}
 
-	form {
+	form, .slayer-masters {
 		display: flex;
 		flex-flow: column;
 		align-items: center;
 		width: 50rem;
 		max-width: 100vw;
 		padding: 0 1rem;
+	}
+
+	.slayer-masters li {
+		width: 100%;
 	}
 
 	.field-header {
@@ -93,6 +99,7 @@
 	.hide-options {
 		transform: translateX(-100%);
 		overflow-y: hidden;
+		position: fixed;
 	}
 
 	.hide-options > * {
@@ -110,17 +117,7 @@
 
 	.results {
 		z-index: -1;
-		background: #900;
-		color: #fcfcfc;
 		min-height: 100vh;
-	}
-
-	.results h1 {
-		color: #fcfcfc;
-	}
-
-	.results p {
-		color: #fcfcfc;
 	}
 
 	.slayer-level {
@@ -148,11 +145,6 @@
 
 	.toggle-results::before {
 		content: 'Results';
-	}
-
-	.options-button {
-		background: #fcfcfc;
-		color: #900;
 	}
 
 	.options-button::before {
@@ -214,5 +206,16 @@
 		<h1>Slayer calculator</h1>
 		<p>Results based on your information</p>
 	</header>
+	<ul class="slayer-masters">
+		<li>
+			<SlayerMasterCard masterIndex=0 />
+		</li>
+		<li>
+			<SlayerMasterCard masterIndex=1 />
+		</li>
+		<li>
+			<SlayerMasterCard masterIndex=2 />
+		</li>
+	</ul>
 </section>
 <button class="toggle-results" class:options-button="{showResults}" on:click|preventDefault={toggleResults}></button>
