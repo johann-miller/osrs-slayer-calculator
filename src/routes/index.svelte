@@ -5,18 +5,18 @@
 	import SlayerMasterCard from '../components/SlayerMasterCard.svelte'
 
 	let unlockMonsters, blockMonsters, quests = []
-	let showResults = false
+	let showResults = true
 
-	UnlockMonsters.subscribe(value => {
-		unlockMonsters = value
+	UnlockMonsters.subscribe(item => {
+		unlockMonsters = item
 	})
 
-	BlockMonsters.subscribe(value => {
-		blockMonsters = value
+	BlockMonsters.subscribe(item => {
+		blockMonsters = item
 	})
 
-	Quests.subscribe(value => {
-		quests = value
+	Quests.subscribe(item => {
+		quests = item
 	})
 
 	function toggleResults() {
@@ -68,7 +68,7 @@
 	}
 
 	header h1 {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 	}
 
 	header p {
@@ -173,9 +173,9 @@
 				<fieldset>
 					<h2 class="field-header">Blocked</h2>
 					<ul class="monster-icons">
-						{#each blockMonsters as value}
+						{#each blockMonsters as item}
 							<li>
-								<MonsterCard monster="{value}" toggled="{value.toggled}"/>
+								<MonsterCard monster="{item}" toggled="{item.toggled}"/>
 							</li>
 						{/each}
 					</ul>
@@ -184,9 +184,9 @@
 				<fieldset>
 					<h2 class="field-header">Unlocked</h2>
 					<ul class="monster-icons">
-						{#each unlockMonsters as value}
+						{#each unlockMonsters as item}
 						<li>
-							<MonsterCard monster="{value}" toggled="{value.toggled}"/>
+							<MonsterCard monster="{item}" toggled="{item.toggled}"/>
 						</li>
 						{/each}
 					</ul>
@@ -195,9 +195,9 @@
 				<fieldset>
 					<h2 class="field-header">Quests</h2>
 					<ul class="quest-icons">
-						{#each quests as value}
+						{#each quests as item}
 							<li>
-								<QuestCard quest="{value}" toggled="{value.toggled}"/>
+								<QuestCard quest="{item}" toggled="{item.toggled}"/>
 							</li>
 						{/each}
 					</ul>

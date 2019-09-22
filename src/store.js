@@ -29,4 +29,7 @@ export const Masters = readable([
 export const Pool = writable([
   {name: 'Abyssal demons', onList: [true, true, true], weight: [12, 9, 9]},
   {name: 'TzHaar', onList: [true, false, true], weight: [12, 9, 9]},
+  {name: 'Cave kraken', onList: [true, true, true], weight: [9, 9, 6]},
+  {name: 'Fire giants', onList: [true, true, true], weight: [7, 9, 9]},
+  {name: 'Wyrms', onList: [true, true, true], weight: [8, 10, 7]},
 ])
