@@ -11,7 +11,7 @@
 
   Pool.subscribe(value => {
     pool = value
-    updateMonsters
+    monsters = updateMonsters(masterIndex)
   })
 
   function relativeChance(chance) {
@@ -22,25 +22,25 @@
 
   // Updates the pool of monsters the slayer master can assign
   function updateMonsters(index) {
-    let monsters = new Array
+    let newMonsters = new Array
     pool.forEach(item => {
       if (item.onList[index]) {
-        monsters = [...monsters, item]
+        newMonsters = [...newMonsters, item]
       }
     })
 
-    return monsters
+    return newMonsters
   }
 
   // Finds the total weight of all monsters in the pool
   function updateTotalWeight(index) {
-    let totalWeight = 0
+    let newTotalWeight = 0
     monsters.forEach(item => {
-      totalWeight = totalWeight + item.weight[index]
+      newTotalWeight = newTotalWeight + item.weight[index]
     })
 
     monsters.forEach(item => {
-      item.chance = 100 * item.weight[index] / totalWeight
+      item.chance = 100 * item.weight[index] / newTotalWeight
       item.chance = item.chance.toFixed(1)
 
       if (item.chance > maxChance) {
@@ -48,7 +48,7 @@
       }
     })
 
-    return totalWeight
+    return newTotalWeight
   }
 
   // Calculates the chance of being assigned
@@ -58,10 +58,6 @@
 
     console.log(totalWeight)
     return chance
-  }
-
-  function append() {
-    monsters = [...monsters, {name: 'test'}]
   }
 </script>
 
@@ -130,5 +126,4 @@
       </li>
     {/each}
   </ul>
-  <button on:click="{append}">Append</button>
 </div>

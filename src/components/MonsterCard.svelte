@@ -1,10 +1,34 @@
 <script>
+	import {Pool, InitialPool} from '../store'
 	export let monster
 	export let toggled
+	export let block
+	let pool
+
+	Pool.subscribe(value => {
+		pool = value
+	})
 
 	function toggle() {
-    toggled = !toggled
-  }
+		toggled = !toggled
+		
+		// If the monster is being toggled
+		pool.forEach((item, index) => {
+			if (item.name == monster.name) {
+				Pool.update(value => {
+					let newValue = value
+					if (toggled) {
+						newValue[index].onList = [false, false, false]
+					} else {
+						newValue[index].onList = $InitialPool[index].onList
+					}
+					
+					return newValue
+				})
+			}
+		})
+	}
+
 </script>
 
 <style>

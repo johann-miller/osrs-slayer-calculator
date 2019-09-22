@@ -1,22 +1,19 @@
 <script>
-	import {UnlockMonsters, BlockMonsters, Quests} from '../store.js'
+	import {UnlockMonsters, Quests, InitialPool} from '../store.js'
 	import MonsterCard from '../components/MonsterCard.svelte'
 	import QuestCard from '../components/QuestCard.svelte'
 	import SlayerMasterCard from '../components/SlayerMasterCard.svelte'
 
-	let unlockMonsters, blockMonsters, quests = []
+	let unlockMonsters, blockMonsters, quests = new Array
 	let showResults = true
 
-	UnlockMonsters.subscribe(item => {
-		unlockMonsters = item
+	InitialPool.subscribe(value => {
+		blockMonsters = value
+		unlockMonsters = value
 	})
 
-	BlockMonsters.subscribe(item => {
-		blockMonsters = item
-	})
-
-	Quests.subscribe(item => {
-		quests = item
+	Quests.subscribe(value => {
+		quests = value
 	})
 
 	function toggleResults() {
@@ -57,7 +54,8 @@
 	}
 
 	header {
-		display: flex;
+		/*display: flex;*/
+		display: none;
 		flex-flow: column;
 		align-items: center;
 		max-width: 40rem;
@@ -174,9 +172,11 @@
 					<h2 class="field-header">Blocked</h2>
 					<ul class="monster-icons">
 						{#each blockMonsters as item}
+						{#if !item.unlocked}
 							<li>
-								<MonsterCard monster="{item}" toggled="{item.toggled}"/>
+								<MonsterCard monster="{item}" toggled="{item.blocked}" block="true"/>
 							</li>
+						{/if}
 						{/each}
 					</ul>
 				</fieldset>
@@ -185,9 +185,11 @@
 					<h2 class="field-header">Unlocked</h2>
 					<ul class="monster-icons">
 						{#each unlockMonsters as item}
+						{#if item.unlocked}
 						<li>
-							<MonsterCard monster="{item}" toggled="{item.toggled}"/>
+							<MonsterCard monster="{item}" toggled="{item.unlocked}" block="false"/>
 						</li>
+						{/if}
 						{/each}
 					</ul>
 				</fieldset>
