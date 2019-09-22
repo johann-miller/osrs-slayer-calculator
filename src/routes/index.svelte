@@ -5,7 +5,7 @@
 	import SlayerMasterCard from '../components/SlayerMasterCard.svelte'
 
 	let unlockMonsters, blockMonsters, quests = []
-	let showResults = true
+	let showResults = false
 
 	UnlockMonsters.subscribe(value => {
 		unlockMonsters = value
@@ -22,7 +22,6 @@
 	function toggleResults() {
 		showResults = !showResults
 		window.scrollTo({ top: 0, behavior: 'smooth' });
-		console.log('bloop')
 	}
 </script>
 
@@ -77,9 +76,6 @@
 	}
 
 	section {
-		position: absolute;
-		top: 0;
-		right: 0;
 		display: flex;
 		flex-flow: column;
 		align-items: center;
@@ -88,26 +84,21 @@
 		overflow-x: hidden;
 	}
 
-	section, .slider-container {
-		transition: all 0.6s ease-in-out;
+	.slider-container, .section-container {
+		transition: all 0.4s ease-in-out;
 	}
 
 	fieldset {
 		width: 100%;
 	}
 
-	.hide-options {
-		transform: translateX(-100%);
-		overflow-y: hidden;
-		position: fixed;
-	}
-
-	.hide-options > * {
-		transform: translateX(100%);
-	}
-
 	.options {
 		background: #fcfcfc;
+	}
+
+	.overflow-hider {
+		width: 100%;
+		overflow-x: hidden;
 	}
 
 	.quest-icons {
@@ -116,8 +107,18 @@
 	}
 
 	.results {
-		z-index: -1;
 		min-height: 100vh;
+	}
+
+	.section-container {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(2, 100%);
+		grid-template-rows: auto;
+	}
+
+	.show-results {
+		transform: translateX(-100%);
 	}
 
 	.slayer-level {
@@ -152,70 +153,72 @@
 	}
 </style>
 
-<section class="options" class:hide-options="{showResults}">
-<div class="slider-container">
-	<header>
-		<h1>Slayer calculator</h1>
-		<p>
-			A simple app that calculates the chances of each slayer assignment
-		</p>
-	</header>
-	<form action="" onsubmit="event.preventDefault()">
-		<fieldset>
-			<h2 class="field-header">Slayer level</h2>
-			<input class="slayer-level" type="number" name="slayer-level" min="1" max="99" maxlength="2">
-		</fieldset>
-		
-		<fieldset>
-			<h2 class="field-header">Blocked</h2>
-			<ul class="monster-icons">
-				{#each blockMonsters as value}
-					<li>
-						<MonsterCard monster="{value}" toggled="{value.toggled}"/>
-					</li>
-				{/each}
-			</ul>
-		</fieldset>
+<header>
+	<h1>Slayer calculator</h1>
+	<p>
+		A simple app that calculates the chances of each slayer assignment
+	</p>
+</header>
 
-		<fieldset>
-			<h2 class="field-header">Unlocked</h2>
-			<ul class="monster-icons">
-				{#each unlockMonsters as value}
-				<li>
-					<MonsterCard monster="{value}" toggled="{value.toggled}"/>
-				</li>
-				{/each}
-			</ul>
-		</fieldset>
+<div class="overflow-hider">
+<div class="section-container" class:show-results="{showResults}">
+	<section class="options">
+		<div class="slider-container">
+			<form action="" onsubmit="event.preventDefault()">
+				<fieldset>
+					<h2 class="field-header">Slayer level</h2>
+					<input class="slayer-level" type="number" name="slayer-level" min="1" max="99" maxlength="2">
+				</fieldset>
+				
+				<fieldset>
+					<h2 class="field-header">Blocked</h2>
+					<ul class="monster-icons">
+						{#each blockMonsters as value}
+							<li>
+								<MonsterCard monster="{value}" toggled="{value.toggled}"/>
+							</li>
+						{/each}
+					</ul>
+				</fieldset>
 
-		<fieldset>
-			<h2 class="field-header">Quests</h2>
-			<ul class="quest-icons">
-				{#each quests as value}
-					<li>
-						<QuestCard quest="{value}" toggled="{value.toggled}"/>
-					</li>
-				{/each}
-			</ul>
-		</fieldset>
-	</form>
+				<fieldset>
+					<h2 class="field-header">Unlocked</h2>
+					<ul class="monster-icons">
+						{#each unlockMonsters as value}
+						<li>
+							<MonsterCard monster="{value}" toggled="{value.toggled}"/>
+						</li>
+						{/each}
+					</ul>
+				</fieldset>
+
+				<fieldset>
+					<h2 class="field-header">Quests</h2>
+					<ul class="quest-icons">
+						{#each quests as value}
+							<li>
+								<QuestCard quest="{value}" toggled="{value.toggled}"/>
+							</li>
+						{/each}
+					</ul>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+	<section class="results">
+		<ul class="slayer-masters">
+			<li>
+				<SlayerMasterCard masterIndex=0 />
+			</li>
+			<li>
+				<SlayerMasterCard masterIndex=1 />
+			</li>
+			<li>
+				<SlayerMasterCard masterIndex=2 />
+			</li>
+		</ul>
+	</section>
 </div>
-</section>
-<section class="results">
-	<header>
-		<h1>Slayer calculator</h1>
-		<p>Results based on your information</p>
-	</header>
-	<ul class="slayer-masters">
-		<li>
-			<SlayerMasterCard masterIndex=0 />
-		</li>
-		<li>
-			<SlayerMasterCard masterIndex=1 />
-		</li>
-		<li>
-			<SlayerMasterCard masterIndex=2 />
-		</li>
-	</ul>
-</section>
+</div>
+
 <button class="toggle-results" class:options-button="{showResults}" on:click|preventDefault={toggleResults}></button>

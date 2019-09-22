@@ -47,9 +47,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 100%;
     height: 2rem;
-    background: rgba(154,160,185,.2);
     border-radius: 1rem;
   }
 
@@ -64,6 +62,7 @@
   .chance-bar {
     position: absolute;
     width: 100%;
+    max-width: 25rem;
     height: 100%;
     border-radius: 1rem;
     overflow: hidden;
