@@ -12,6 +12,7 @@
   Pool.subscribe(value => {
     pool = value
     monsters = updateMonsters(masterIndex)
+    totalWeight = updateTotalWeight(masterIndex)
   })
 
   function relativeChance(chance) {

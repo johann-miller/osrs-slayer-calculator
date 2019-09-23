@@ -1,11 +1,11 @@
 <script>
 	import {Pool, InitialPool} from '../store'
 	export let monster
-	export let toggled
+	export let toggled = false
 	export let block
 	let pool
 
-	Pool.subscribe(value => {
+	InitialPool.subscribe(value => {
 		pool = value
 	})
 
@@ -18,9 +18,17 @@
 				Pool.update(value => {
 					let newValue = value
 					if (toggled) {
-						newValue[index].onList = [false, false, false]
+						if (block) {
+							newValue[index].onList = [false, false, false]
+						} else {
+							newValue[index].onList = $InitialPool[index].unlockList
+						}
 					} else {
-						newValue[index].onList = $InitialPool[index].onList
+						if (block) {
+							newValue[index].onList = $InitialPool[index].onList
+						} else {
+							newValue[index].onList = $InitialPool[index].onList
+						}
 					}
 					
 					return newValue

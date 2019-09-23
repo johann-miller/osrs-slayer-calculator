@@ -1,11 +1,11 @@
 <script>
-	import {UnlockMonsters, Quests, InitialPool} from '../store.js'
+	import {SlayerLevel, UnlockMonsters, Quests, InitialPool} from '../store.js'
 	import MonsterCard from '../components/MonsterCard.svelte'
 	import QuestCard from '../components/QuestCard.svelte'
 	import SlayerMasterCard from '../components/SlayerMasterCard.svelte'
 
 	let unlockMonsters, blockMonsters, quests = new Array
-	let showResults = true
+	let showResults = false
 
 	InitialPool.subscribe(value => {
 		blockMonsters = value
@@ -19,6 +19,10 @@
 	function toggleResults() {
 		showResults = !showResults
 		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+
+	function slayerLevelChanged() {
+
 	}
 </script>
 
@@ -174,7 +178,7 @@
 						{#each blockMonsters as item}
 						{#if !item.unlocked}
 							<li>
-								<MonsterCard monster="{item}" toggled="{item.blocked}" block="true"/>
+								<MonsterCard monster="{item}" block="true"/>
 							</li>
 						{/if}
 						{/each}
@@ -187,7 +191,7 @@
 						{#each unlockMonsters as item}
 						{#if item.unlocked}
 						<li>
-							<MonsterCard monster="{item}" toggled="{item.unlocked}" block="false"/>
+							<MonsterCard monster="{item}" block="{!item.unlocked}"/>
 						</li>
 						{/if}
 						{/each}
