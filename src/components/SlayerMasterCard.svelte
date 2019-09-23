@@ -42,6 +42,8 @@
     })
 
     totalWeight = newTotalWeight
+
+    sortByChance()
   }
 
   function chance(monster) {

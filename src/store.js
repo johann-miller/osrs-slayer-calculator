@@ -2,7 +2,6 @@ import {writable, readable} from 'svelte/store'
 
 export var SlayerLevel = writable(99)
 export var sortByName = false
-export var sortByChance = true
 export var sortByMonster = {toggled: false, monster: 'Aberrant spectres'}
 
 export var UnlockMonsters = writable([
