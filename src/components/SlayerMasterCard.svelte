@@ -1,11 +1,11 @@
 <script>
   import { onMount } from 'svelte'
-  import {Pool, Masters} from '../store'
+  import {SlayerLevel, Pool, Masters} from '../store'
 
   export let masterIndex = 0
   let pool = $Pool
-  let master = $Masters[masterIndex]
-  let maxChance = 0
+  let slayerLevel = 1
+  var master = $Masters[masterIndex]
   let monsters = updateMonsters(masterIndex)
   let totalWeight = updateTotalWeight(masterIndex)
 
@@ -15,17 +15,17 @@
     totalWeight = updateTotalWeight(masterIndex)
   })
 
-  function relativeChance(chance) {
-    let relativeChance = chance / maxChance
-    relativeChance = 100 * relativeChance
-    return relativeChance
-  }
+  SlayerLevel.subscribe(value => {
+    slayerLevel = value
+    monsters = updateMonsters(masterIndex)
+    totalWeight = updateTotalWeight(masterIndex)
+  })
 
   // Updates the pool of monsters the slayer master can assign
   function updateMonsters(index) {
-    let newMonsters = new Array
+    let newMonsters = []
     pool.forEach(item => {
-      if (item.onList[index]) {
+      if (item.onList[index] && item.slayerLevel <= slayerLevel) {
         newMonsters = [...newMonsters, item]
       }
     })
@@ -36,29 +36,22 @@
   // Finds the total weight of all monsters in the pool
   function updateTotalWeight(index) {
     let newTotalWeight = 0
+
     monsters.forEach(item => {
       newTotalWeight = newTotalWeight + item.weight[index]
     })
 
-    monsters.forEach(item => {
-      item.chance = 100 * item.weight[index] / newTotalWeight
-      item.chance = item.chance.toFixed(1)
+    console.log("\n")
 
-      if (item.chance > maxChance) {
-        maxChance = item.chance
-      }
+    monsters.forEach(item => {
+      let chance
+      chance = 100 * item.weight[masterIndex] / newTotalWeight
+      chance = chance.toFixed(1)
+      item.chance = chance
+      console.log(master.name + " " + item.name + " " + chance)
     })
 
     return newTotalWeight
-  }
-
-  // Calculates the chance of being assigned
-  function updateChance(monster, index) {
-    let chance = 0
-    monster.chance = monster.weight[index] / totalWeight
-
-    console.log(totalWeight)
-    return chance
   }
 </script>
 
@@ -118,12 +111,12 @@
 
 <div class="card">
   <h2>{master.name}</h2>
-  <img class="master-portrait" src="{master.image}" alt="Nieve">
+  <img class="master-portrait" src="{master.image}" alt="{master.name}">
   <ul class="monsters">
     {#each monsters as item}
       <li class="monster-bar">
         <span>{item.name}</span>
-        <span class="chance">{item.chance}</span>
+        <span class="chance">{item.chance} {master.name}</span>
       </li>
     {/each}
   </ul>

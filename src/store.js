@@ -1,6 +1,6 @@
 import {writable, readable} from 'svelte/store'
 
-export var SlayerLevel = writable(1)
+export var SlayerLevel = writable(99)
 
 export var UnlockMonsters = writable([
   {name: 'Aviansies', image: '/images/230px-Aviansie.webp', toggled: false},
@@ -86,6 +86,16 @@ export const InitialPool = readable([
     unlocked: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/e/ec/Aviansie_%28level_69%29.png/230px-Aviansie_%28level_69%29.png?bc4a8'
   },
+  {
+    name: 'Gargoyles',
+    onList: [false, false, false],
+    unlockList: [true, true, true],
+    weight: [8, 6, 6],
+    slayerLevel: 1,
+    blocked: false,
+    unlocked: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/4/44/Gargoyle.png/250px-Gargoyle.png?b7dd7'
+  },
 ])
 
 export const Pool = writable([
@@ -151,5 +161,15 @@ export const Pool = writable([
     blocked: false,
     unlocked: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/e/ec/Aviansie_%28level_69%29.png/230px-Aviansie_%28level_69%29.png?bc4a8'
+  },
+  {
+    name: 'Gargoyles',
+    onList: [false, false, false],
+    unlockList: [true, true, true],
+    weight: [8, 6, 6],
+    slayerLevel: 1,
+    blocked: false,
+    unlocked: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/4/44/Gargoyle.png/250px-Gargoyle.png?b7dd7'
   },
 ])

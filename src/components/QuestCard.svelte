@@ -1,9 +1,22 @@
 <script>
+	import {Pool, InitialPool} from '../store'
 	export let quest
 	export let toggled
 
 	function toggle() {
-    toggled = !toggled
+		toggled = !toggled
+		
+		quest.monsters.forEach(item => {
+			$InitialPool.forEach((childItem, index) => {
+				if (item == childItem.name) {
+					if (toggled) {
+						$Pool[index].onList = $InitialPool[index].unlockList
+					} else {
+						$Pool[index].onList = $InitialPool[index].onList
+					}
+				}
+			})
+		})
   }
 </script>
 

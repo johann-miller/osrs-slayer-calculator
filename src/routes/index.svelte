@@ -6,6 +6,7 @@
 
 	let unlockMonsters, blockMonsters, quests = new Array
 	let showResults = false
+	let slayerLevel = 99
 
 	InitialPool.subscribe(value => {
 		blockMonsters = value
@@ -21,8 +22,10 @@
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
-	function slayerLevelChanged() {
-
+	function updateSlayerLevel() {
+		SlayerLevel.update(() => {
+			return slayerLevel
+		})
 	}
 </script>
 
@@ -169,7 +172,7 @@
 			<form action="" onsubmit="event.preventDefault()">
 				<fieldset>
 					<h2 class="field-header">Slayer level</h2>
-					<input class="slayer-level" type="number" name="slayer-level" min="1" max="99" maxlength="2">
+					<input class="slayer-level" type="number" name="slayer-level" min="1" max="99" maxlength="2" on:change="{updateSlayerLevel}" bind:value="{slayerLevel}">
 				</fieldset>
 				
 				<fieldset>
