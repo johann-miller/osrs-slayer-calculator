@@ -13,7 +13,7 @@ export var UnlockMonsters = writable([
 
 export var Quests = writable([
   {name: 'Priest in Peril', monsters: ['Gargoyles'], toggled: false},
-  {name: 'Cabin Fever', monsters: ['Cave horror'], toggled: false}
+  {name: 'Cabin Fever', monsters: ['Cave horrors'], toggled: false}
 ])
 
 export const Masters = readable([
@@ -23,6 +23,15 @@ export const Masters = readable([
 ])
 
 export const InitialPool = writable([
+  {
+    name: 'Aberrant spectre',
+    onList: [true, true, true],
+    weight: [7, 6, 6],
+    slayerLevel: 60,
+    blocked: false,
+    unlocked: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/b/b2/Aberrant_spectre.png/150px-Aberrant_spectre.png?65d6f'
+  },
   {
     name: 'Abyssal demons',
     onList: [true, true, true],
@@ -34,12 +43,23 @@ export const InitialPool = writable([
   },
   {
     name: 'TzHaar',
-    onList: [true, false, true],
-    weight: [12, 9, 9],
+    onList: [false, false, false],
+    unlockList: [true, false, true],
+    weight: [12, 0, 9],
     slayerLevel: 1,
     blocked: false,
-    unlocked: false,
+    unlocked: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/6/6c/TzHaar-Ket.png/120px-TzHaar-Ket.png?ee1fa'
+  },
+  {
+    name: 'Cave horrors',
+    onList: [false, false, false],
+    unlockList: [true, false, true],
+    weight: [4, 0, 5],
+    slayerLevel: 58,
+    blocked: false,
+    unlocked: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/5/5b/Cave_horror_%281%29.png/240px-Cave_horror_%281%29.png?a57e4'
   },
   {
     name: 'Cave kraken',
