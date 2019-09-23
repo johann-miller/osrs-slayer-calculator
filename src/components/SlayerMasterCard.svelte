@@ -51,6 +51,27 @@
 
     return chance
   }
+
+  // dynamicSort is thanks to Ege Özcan - https://stackoverflow.com/users/300011/ege-%c3%96zcan
+  function dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+  }
+
+  function sortByChance() {
+    monsters = monsters.sort((a,b) => chance(b) - chance(a))
+  }
+
+  function sortByName() {
+    monsters = monsters.sort(dynamicSort("name"))
+  }
 </script>
 
 <style>
@@ -118,4 +139,6 @@
       </li>
     {/each}
   </ul>
+  <button on:click|preventDefault="{sortByChance}">Sort by chance</button>
+  <button on:click|preventDefault="{sortByName}">Sort by name</button>
 </div>
