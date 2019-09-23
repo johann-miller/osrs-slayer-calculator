@@ -41,14 +41,11 @@
       newTotalWeight = newTotalWeight + item.weight[index]
     })
 
-    console.log("\n")
-
     monsters.forEach(item => {
       let chance
       chance = 100 * item.weight[masterIndex] / newTotalWeight
       chance = chance.toFixed(1)
       item.chance = chance
-      console.log(master.name + " " + item.name + " " + chance)
     })
 
     return newTotalWeight
@@ -116,7 +113,7 @@
     {#each monsters as item}
       <li class="monster-bar">
         <span>{item.name}</span>
-        <span class="chance">{item.chance} {master.name}</span>
+        <span class="chance">{item.chance}</span>
       </li>
     {/each}
   </ul>
