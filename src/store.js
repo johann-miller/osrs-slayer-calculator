@@ -98,7 +98,7 @@ export const InitialPool = readable([
   },
 ])
 
-export const Pool = writable([
+export let Pool = writable([
   {
     name: 'Abyssal demons',
     onList: [true, true, true],

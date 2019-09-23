@@ -38,18 +38,8 @@
     monsters.forEach(item => {
       newTotalWeight = newTotalWeight + item.weight[index]
     })
-    console.log(newTotalWeight)
 
     totalWeight = newTotalWeight
-  }
-
-  function updateChances() {
-    monsters.forEach(item => {
-      let chance
-      chance = 100 * item.weight[masterIndex] / totalWeight
-      chance = chance.toFixed(1)
-      item.chance = chance
-    })
   }
 
   function chance(monster) {
@@ -58,19 +48,6 @@
     chance = chance.toFixed(1)
 
     return chance
-  }
-
-  function update() {
-    updateMonsters(masterIndex)
-    updateTotalWeight(masterIndex)
-    updateChances()
-  }
-
-  function log(value) {
-    console.log('\n')
-    monsters.forEach(item => {
-      console.log(item.name + " " + item.chance)
-    })
   }
 </script>
 
@@ -138,6 +115,5 @@
         <span class="chance">{chance(item)}</span>
       </li>
     {/each}
-    <button on:click|preventDefault="{log}">log</button>
   </ul>
 </div>
