@@ -179,7 +179,7 @@
 					<h2 class="field-header">Blocked</h2>
 					<ul class="monster-icons">
 						{#each blockMonsters as item}
-						{#if !item.unlocked}
+						{#if !item.unlocked && item.slayerLevel <= slayerLevel}
 							<li>
 								<MonsterCard monster="{item}" block="true"/>
 							</li>

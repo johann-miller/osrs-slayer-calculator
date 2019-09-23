@@ -18,6 +18,8 @@
 
   SlayerLevel.subscribe(value => {
     slayerLevel = value
+    updateMonsters(masterIndex)
+    updateTotalWeight(masterIndex)
   })
 
   // Updates the pool of monsters the slayer master can assign
