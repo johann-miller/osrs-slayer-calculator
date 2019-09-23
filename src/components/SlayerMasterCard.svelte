@@ -1,36 +1,34 @@
 <script>
   import { onMount } from 'svelte'
-  import {SlayerLevel, Pool, Masters} from '../store'
+  import {SlayerLevel, Pool, InitialPool, Masters} from '../store'
 
   export let masterIndex = 0
+  let counter = 0
   let pool = $Pool
-  let slayerLevel = 1
+  let slayerLevel = 99
   var master = $Masters[masterIndex]
-  let monsters = updateMonsters(masterIndex)
-  let totalWeight = updateTotalWeight(masterIndex)
+  let monsters = []
+  var totalWeight = updateTotalWeight(masterIndex)
 
   Pool.subscribe(value => {
     pool = value
-    monsters = updateMonsters(masterIndex)
-    totalWeight = updateTotalWeight(masterIndex)
+    updateMonsters(masterIndex)
+    updateTotalWeight(masterIndex)
   })
 
   SlayerLevel.subscribe(value => {
     slayerLevel = value
-    monsters = updateMonsters(masterIndex)
-    totalWeight = updateTotalWeight(masterIndex)
   })
 
   // Updates the pool of monsters the slayer master can assign
   function updateMonsters(index) {
     let newMonsters = []
-    pool.forEach(item => {
+    $Pool.forEach(item => {
       if (item.onList[index] && item.slayerLevel <= slayerLevel) {
         newMonsters = [...newMonsters, item]
       }
     })
-
-    return newMonsters
+    monsters = newMonsters
   }
 
   // Finds the total weight of all monsters in the pool
@@ -40,15 +38,39 @@
     monsters.forEach(item => {
       newTotalWeight = newTotalWeight + item.weight[index]
     })
+    console.log(newTotalWeight)
 
+    totalWeight = newTotalWeight
+  }
+
+  function updateChances() {
     monsters.forEach(item => {
       let chance
-      chance = 100 * item.weight[masterIndex] / newTotalWeight
+      chance = 100 * item.weight[masterIndex] / totalWeight
       chance = chance.toFixed(1)
       item.chance = chance
     })
+  }
 
-    return newTotalWeight
+  function chance(monster) {
+    let chance
+    chance = 100 * monster.weight[masterIndex] / totalWeight
+    chance = chance.toFixed(1)
+
+    return chance
+  }
+
+  function update() {
+    updateMonsters(masterIndex)
+    updateTotalWeight(masterIndex)
+    updateChances()
+  }
+
+  function log(value) {
+    console.log('\n')
+    monsters.forEach(item => {
+      console.log(item.name + " " + item.chance)
+    })
   }
 </script>
 
@@ -113,8 +135,9 @@
     {#each monsters as item}
       <li class="monster-bar">
         <span>{item.name}</span>
-        <span class="chance">{item.chance}</span>
+        <span class="chance">{chance(item)}</span>
       </li>
     {/each}
+    <button on:click|preventDefault="{log}">log</button>
   </ul>
 </div>
