@@ -27,7 +27,9 @@
 					} else {
 						if (block) {
 							newValue[index].onList = $InitialPool[index].onList
-							console.log($InitialPool)
+							if (pool[index].questCompleted) {
+								newValue[index].onList = $InitialPool[index].unlockList
+							}
 						} else {
 							newValue[index].onList = [false, false, false]
 						}

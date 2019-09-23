@@ -117,6 +117,7 @@ export const InitialPool = readable([
     slayerLevel: 77,
     blocked: false,
     unlocked: false,
+    questCompleted: false,
     image: 'https://oldschool.runescape.wiki/images/thumb/4/44/Gargoyle.png/250px-Gargoyle.png?b7dd7'
   },
 ])
@@ -213,6 +214,7 @@ export let Pool = writable([
     slayerLevel: 77,
     blocked: false,
     unlocked: false,
+    questCompleted: false,
     image: 'https://oldschool.runescape.wiki/images/thumb/4/44/Gargoyle.png/250px-Gargoyle.png?b7dd7'
   },
 ])

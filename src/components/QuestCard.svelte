@@ -6,18 +6,24 @@
 	function toggle() {
 		toggled = !toggled
 		
+		updateList()
+	}
+	
+	function updateList() {
 		quest.monsters.forEach(item => {
 			$InitialPool.forEach((childItem, index) => {
 				if (item == childItem.name) {
 					if (toggled) {
 						$Pool[index].onList = $InitialPool[index].unlockList
+						$Pool[index].questCompleted = true
 					} else {
 						$Pool[index].onList = $InitialPool[index].onList
+						$Pool[index].questCompleted = false
 					}
 				}
 			})
 		})
-  }
+	}
 </script>
 
 <style>
