@@ -110,8 +110,7 @@
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-rows: auto;
-    height: 2rem;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem;
     
     border-bottom: 1px #e7e7e7 solid;
     width: 100%;
@@ -125,6 +124,13 @@
   .monster-bar:not(:first-child) {
     margin-top: 1rem;
   }
+
+  .legend {
+    grid-template-columns: repeat(2, 50%);
+    height: auto;
+    border-radius: 0.3rem;
+    background: #e7e7e7;
+  }
   
 </style>
 
@@ -132,6 +138,10 @@
   <h2>{master.name}</h2>
   <img class="master-portrait" src="{master.image}" alt="{master.name}">
   <ul class="monsters">
+    <li class="monster-bar legend">
+      <span>Name</span>
+      <span class="chance">Chance (%)</span>
+    </li>
     {#each monsters as item}
       <li class="monster-bar">
         <span>{item.name}</span>
@@ -139,6 +149,4 @@
       </li>
     {/each}
   </ul>
-  <button on:click|preventDefault="{sortByChance}">Sort by chance</button>
-  <button on:click|preventDefault="{sortByName}">Sort by name</button>
 </div>
