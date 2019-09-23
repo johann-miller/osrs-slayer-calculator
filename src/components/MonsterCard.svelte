@@ -1,11 +1,12 @@
 <script>
+	import { get } from 'svelte/store'
 	import {Pool, InitialPool} from '../store'
 	export let monster
 	export let toggled = false
 	export let block
 	let pool
 
-	InitialPool.subscribe(value => {
+	Pool.subscribe(value => {
 		pool = value
 	})
 
@@ -26,8 +27,9 @@
 					} else {
 						if (block) {
 							newValue[index].onList = $InitialPool[index].onList
+							console.log($InitialPool)
 						} else {
-							newValue[index].onList = $InitialPool[index].onList
+							newValue[index].onList = [false, false, false]
 						}
 					}
 					
