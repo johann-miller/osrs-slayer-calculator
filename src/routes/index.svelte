@@ -111,7 +111,15 @@
 	}
 
 	fieldset {
+		position: relative;
 		width: 100%;
+	}
+
+	.field-counter {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		color: #900;
 	}
 
 	.options {
@@ -190,6 +198,7 @@
 				<fieldset>
 					<h2 class="field-header">Slayer level</h2>
 					<input class="slayer-level" type="number" name="slayer-level" min="1" max="99" maxlength="2" on:change="{updateSlayerLevel}" bind:value="{slayerLevel}">
+					<span class="field-counter">1/4</span>
 				</fieldset>
 				
 				<fieldset>
@@ -203,6 +212,7 @@
 						{/if}
 						{/each}
 					</ul>
+					<span class="field-counter">2/4</span>
 				</fieldset>
 
 				<fieldset>
@@ -216,6 +226,7 @@
 						{/if}
 						{/each}
 					</ul>
+					<span class="field-counter">3/4</span>
 				</fieldset>
 
 				<fieldset>
@@ -227,6 +238,7 @@
 							</li>
 						{/each}
 					</ul>
+					<span class="field-counter">4/4</span>
 				</fieldset>
 			</form>
 		</div>

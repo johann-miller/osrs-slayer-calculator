@@ -79,7 +79,7 @@ export const InitialPool = readable([
   {
     name: 'Aviansies',
     onList: [true, true, true],
-    weight: [9, 9, 9],
+    weight: [8, 9, 9],
     slayerLevel: 1,
     blocked: true,
     unlocked: true,
@@ -541,7 +541,7 @@ export let Pool = writable([
   {
     name: 'Aviansies',
     onList: [true, true, true],
-    weight: [9, 9, 9],
+    weight: [8, 9, 9],
     slayerLevel: 1,
     blocked: true,
     unlocked: true,
