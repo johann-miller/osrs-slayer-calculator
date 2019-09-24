@@ -32,6 +32,7 @@ export const InitialPool = readable([
     slayerLevel: 60,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/b/b2/Aberrant_spectre.png/150px-Aberrant_spectre.png?65d6f'
   },
   {
@@ -41,6 +42,7 @@ export const InitialPool = readable([
     slayerLevel: 85,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/2/21/Abyssal_demon.png/200px-Abyssal_demon.png?5e1ed'
   },
   {
@@ -48,8 +50,9 @@ export const InitialPool = readable([
     onList: [true, false, true],
     weight: [12, 0, 9],
     slayerLevel: 1,
-    blocked: false,
+    blocked: true,
     unlocked: true,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/6/6c/TzHaar-Ket.png/120px-TzHaar-Ket.png?ee1fa'
   },
   {
@@ -57,7 +60,7 @@ export const InitialPool = readable([
     onList: [true, false, true],
     weight: [4, 0, 5],
     slayerLevel: 58,
-    blocked: true,
+    blocked: false,
     unlocked: false,
     questCompleted: false,
     image: 'https://oldschool.runescape.wiki/images/thumb/5/5b/Cave_horror_%281%29.png/240px-Cave_horror_%281%29.png?a57e4'
@@ -69,6 +72,7 @@ export const InitialPool = readable([
     slayerLevel: 87,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/d/dc/Cave_kraken.png/290px-Cave_kraken.png?4612a'
   },
   {
@@ -78,6 +82,7 @@ export const InitialPool = readable([
     slayerLevel: 1,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/1/16/Fire_giant.png/120px-Fire_giant.png?30592'
   },
   {
@@ -87,6 +92,7 @@ export const InitialPool = readable([
     slayerLevel: 62,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/1/1a/Wyrm.png/250px-Wyrm.png?27909'},
   {
     name: 'Kalphites',
@@ -95,6 +101,7 @@ export const InitialPool = readable([
     slayerLevel: 1,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/e/e9/Kalphite_Soldier.png/250px-Kalphite_Soldier.png?33258'
   },
   {
@@ -104,6 +111,7 @@ export const InitialPool = readable([
     slayerLevel: 1,
     blocked: true,
     unlocked: true,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/e/ec/Aviansie_%28level_69%29.png/230px-Aviansie_%28level_69%29.png?bc4a8'
   },
   {
@@ -126,6 +134,7 @@ export let Pool = writable([
     slayerLevel: 60,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/b/b2/Aberrant_spectre.png/150px-Aberrant_spectre.png?65d6f'
   },
   {
@@ -135,22 +144,22 @@ export let Pool = writable([
     slayerLevel: 85,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/2/21/Abyssal_demon.png/200px-Abyssal_demon.png?5e1ed'
   },
   {
     name: 'TzHaar',
-    onList: [false, false, false],
-    unlockList: [true, false, true],
+    onList: [true, false, true],
     weight: [12, 0, 9],
     slayerLevel: 1,
-    blocked: false,
+    blocked: true,
     unlocked: true,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/6/6c/TzHaar-Ket.png/120px-TzHaar-Ket.png?ee1fa'
   },
   {
     name: 'Cave horrors',
-    onList: [false, false, false],
-    unlockList: [true, false, true],
+    onList: [true, false, true],
     weight: [4, 0, 5],
     slayerLevel: 58,
     blocked: false,
@@ -165,6 +174,7 @@ export let Pool = writable([
     slayerLevel: 87,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/d/dc/Cave_kraken.png/290px-Cave_kraken.png?4612a'
   },
   {
@@ -174,6 +184,7 @@ export let Pool = writable([
     slayerLevel: 1,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/1/16/Fire_giant.png/120px-Fire_giant.png?30592'
   },
   {
@@ -183,6 +194,7 @@ export let Pool = writable([
     slayerLevel: 62,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/1/1a/Wyrm.png/250px-Wyrm.png?27909'},
   {
     name: 'Kalphites',
@@ -191,22 +203,22 @@ export let Pool = writable([
     slayerLevel: 1,
     blocked: false,
     unlocked: false,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/e/e9/Kalphite_Soldier.png/250px-Kalphite_Soldier.png?33258'
   },
   {
     name: 'Aviansies',
-    onList: [false, false, false],
-    unlockList: [true, true, true],
+    onList: [true, true, true],
     weight: [9, 9, 9],
     slayerLevel: 1,
-    blocked: false,
+    blocked: true,
     unlocked: true,
+    questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/e/ec/Aviansie_%28level_69%29.png/230px-Aviansie_%28level_69%29.png?bc4a8'
   },
   {
     name: 'Gargoyles',
-    onList: [false, false, false],
-    unlockList: [true, true, true],
+    onList: [true, true, true],
     weight: [8, 6, 6],
     slayerLevel: 77,
     blocked: false,

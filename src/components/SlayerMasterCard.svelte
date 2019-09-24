@@ -26,7 +26,7 @@
   function updateMonsters(index) {
     let newMonsters = []
     $Pool.forEach(item => {
-      if (item.onList[index] && item.slayerLevel <= slayerLevel  && !item.blocked) {
+      if (item.onList[index] && item.slayerLevel <= slayerLevel  && !item.blocked && item.questCompleted) {
         newMonsters = [...newMonsters, item]
       }
     })
