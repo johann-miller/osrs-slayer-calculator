@@ -45,8 +45,7 @@ export const InitialPool = readable([
   },
   {
     name: 'TzHaar',
-    onList: [false, false, false],
-    unlockList: [true, false, true],
+    onList: [true, false, true],
     weight: [12, 0, 9],
     slayerLevel: 1,
     blocked: false,
@@ -55,12 +54,12 @@ export const InitialPool = readable([
   },
   {
     name: 'Cave horrors',
-    onList: [false, false, false],
-    unlockList: [true, false, true],
+    onList: [true, false, true],
     weight: [4, 0, 5],
     slayerLevel: 58,
-    blocked: false,
+    blocked: true,
     unlocked: false,
+    questCompleted: false,
     image: 'https://oldschool.runescape.wiki/images/thumb/5/5b/Cave_horror_%281%29.png/240px-Cave_horror_%281%29.png?a57e4'
   },
   {
@@ -100,18 +99,16 @@ export const InitialPool = readable([
   },
   {
     name: 'Aviansies',
-    onList: [false, false, false],
-    unlockList: [true, true, true],
+    onList: [true, true, true],
     weight: [9, 9, 9],
     slayerLevel: 1,
-    blocked: false,
+    blocked: true,
     unlocked: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/e/ec/Aviansie_%28level_69%29.png/230px-Aviansie_%28level_69%29.png?bc4a8'
   },
   {
     name: 'Gargoyles',
-    onList: [false, false, false],
-    unlockList: [true, true, true],
+    onList: [true, true, true],
     weight: [8, 6, 6],
     slayerLevel: 77,
     blocked: false,
@@ -158,6 +155,7 @@ export let Pool = writable([
     slayerLevel: 58,
     blocked: false,
     unlocked: false,
+    questCompleted: false,
     image: 'https://oldschool.runescape.wiki/images/thumb/5/5b/Cave_horror_%281%29.png/240px-Cave_horror_%281%29.png?a57e4'
   },
   {

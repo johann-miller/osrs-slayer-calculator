@@ -18,22 +18,26 @@
 			if (item.name == monster.name) {
 				Pool.update(value => {
 					let newValue = value
-					if (toggled) {
-						if (block) {
-							newValue[index].onList = [false, false, false]
-						} else {
-							newValue[index].onList = $InitialPool[index].unlockList
-						}
-					} else {
-						if (block) {
-							newValue[index].onList = $InitialPool[index].onList
-							if (pool[index].questCompleted) {
-								newValue[index].onList = $InitialPool[index].unlockList
-							}
-						} else {
-							newValue[index].onList = [false, false, false]
-						}
+					let blocked = new Boolean
+
+					if (toggled && block) {
+						console.log('blocked')
+						blocked = true
+					} 
+					else if (toggled && !block) {
+						console.log('unlocked')
+						blocked = false
 					}
+					else if (!toggled && block) {
+						console.log('unblocked')
+						blocked = false
+					}
+					else if (!toggled && !block) {
+						console.log('un-unlocked')
+						blocked = true
+					}
+
+					newValue[index].blocked = blocked
 					
 					return newValue
 				})

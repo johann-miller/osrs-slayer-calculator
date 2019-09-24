@@ -5,7 +5,7 @@
 	import SlayerMasterCard from '../components/SlayerMasterCard.svelte'
 
 	let unlockMonsters, blockMonsters, quests = new Array
-	let showResults = true
+	let showResults = false
 	let slayerLevel = 99
 
 	InitialPool.subscribe(value => {
