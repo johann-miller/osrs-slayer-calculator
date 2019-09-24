@@ -1,7 +1,9 @@
 <script>
+	import { onMount } from 'svelte'
 	import { get } from 'svelte/store'
 	import {Pool, InitialPool} from '../store'
 	export let monster
+	export let monsterIndex
 	export let toggled = false
 	export let block
 	let pool
@@ -13,37 +15,44 @@
 	function toggle() {
 		toggled = !toggled
 		
-		// If the monster is being toggled
-		pool.forEach((item, index) => {
-			if (item.name == monster.name) {
-				Pool.update(value => {
-					let newValue = value
-					let blocked = new Boolean
+		update()
+	}
 
-					if (toggled && block) {
-						console.log('blocked')
-						blocked = true
-					} 
-					else if (toggled && !block) {
-						console.log('unlocked')
-						blocked = false
-					}
-					else if (!toggled && block) {
-						console.log('unblocked')
-						blocked = false
-					}
-					else if (!toggled && !block) {
-						console.log('un-unlocked')
-						blocked = true
-					}
+	function update() {
+		Pool.update(value => {
+			let newValue = value
+			let blocked = new Boolean
 
-					newValue[index].blocked = blocked
-					
-					return newValue
-				})
+			if (toggled && block) {
+				blocked = true
+			} 
+			else if (toggled && !block) {
+				blocked = false
 			}
+			else if (!toggled && block) {
+				blocked = false
+			}
+			else if (!toggled && !block) {
+				blocked = true
+			}
+
+			newValue[monsterIndex].blocked = blocked
+			
+			return newValue
 		})
 	}
+
+	onMount(() => {
+		let savedMonster = localStorage.getItem(monster.name)
+		savedMonster = JSON.parse(savedMonster)
+
+		if (savedMonster) {
+			console.log(monster.name + ' exitst: ')
+			console.log(savedMonster)
+		} else {
+			console.log
+		}
+	})
 
 </script>
 

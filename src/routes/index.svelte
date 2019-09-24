@@ -178,10 +178,10 @@
 				<fieldset>
 					<h2 class="field-header">Blocked</h2>
 					<ul class="monster-icons">
-						{#each blockMonsters as item}
+						{#each blockMonsters as item, index}
 						{#if !item.unlocked && item.slayerLevel <= slayerLevel}
 							<li>
-								<MonsterCard monster="{item}" block="true"/>
+								<MonsterCard monster="{item}" block="true" monsterIndex="{index}"/>
 							</li>
 						{/if}
 						{/each}
@@ -191,10 +191,10 @@
 				<fieldset>
 					<h2 class="field-header">Unlocked</h2>
 					<ul class="monster-icons">
-						{#each unlockMonsters as item}
+						{#each unlockMonsters as item, index}
 						{#if item.unlocked}
 						<li>
-							<MonsterCard monster="{item}" block="{!item.unlocked}"/>
+							<MonsterCard monster="{item}" block="{!item.unlocked}" monsterIndex="{index}"/>
 						</li>
 						{/if}
 						{/each}

@@ -6,10 +6,10 @@
 	function toggle() {
 		toggled = !toggled
 		
-		updateList()
+		update()
 	}
 	
-	function updateList() {
+	function	update() {
 		let questCompleted = new Boolean
 		if (toggled) {
 			questCompleted = true
