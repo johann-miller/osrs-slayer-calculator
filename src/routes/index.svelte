@@ -76,17 +76,20 @@
 
 	header {
 		display: flex;
-		flex-flow: column;
-		align-items: center;
-		max-width: 40rem;
-		padding: 2rem 1rem;
-		margin: 6rem 0;
+		flex-flow: row;
+		align-items: baseline;
+		justify-content: center;
+		padding: 1rem;
+		margin-bottom: 4rem;
+		width: 100%;
 
 		border-bottom: 1px #e7e7e7 solid;
+		box-shadow: 0 1px 2px rgba(154,160,185,.05), 0 2px 4px rgba(166,173,201,.2);
 	}
 
 	header h1 {
-		margin-bottom: 1rem;
+		font-size: 1.5rem;
+		margin-right: 1rem;
 	}
 
 	header p {

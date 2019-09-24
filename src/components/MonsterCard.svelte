@@ -65,9 +65,9 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
-		width: 10rem;
-		height: 12rem;
-		padding: 1rem;
+		width: 7rem;
+		height: 10rem;
+		padding: 0.5rem;
 		margin: 0.5rem 0;
 
 		text-align: center;
@@ -107,7 +107,7 @@
   }
 
 	.monster-icon {
-		height: 4rem;
+		height: 3.5rem;
 		width: auto;
 		margin-bottom: 0.5rem;
 	}
