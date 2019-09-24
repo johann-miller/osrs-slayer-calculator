@@ -52,7 +52,6 @@
 		justify-content: center;
 		position: relative;
 		padding: 1rem;
-    margin: 0.5rem 0;
     width: 100%;
 
 		text-align: center;

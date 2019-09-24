@@ -46,14 +46,15 @@
 <style>
 	.monster-icons {
 		display: flex;
-		flex-flow: row;
-		flex-wrap: wrap;
+		flex-flow: column;
 		align-items: center;
 		justify-content: center;
-		max-width: 100%;
+		width: 100%;
+		max-width: 20rem;
 	}
 
 	.monster-icons > li {
+		width: 100%;
 		margin: 0.5rem;
 	}
 
@@ -125,6 +126,11 @@
 	.quest-icons {
 		width: 100%;
 		max-width: 20rem;
+	}
+
+	.quest-icons > li {
+		width: 100%;
+		margin: 0.5rem;
 	}
 
 	.results {

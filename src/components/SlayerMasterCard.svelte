@@ -49,7 +49,7 @@
   function chance(monster) {
     let chance
     chance = 100 * monster.weight[masterIndex] / totalWeight
-    chance = chance.toFixed(1)
+    chance = chance.toFixed(2)
 
     return chance
   }
@@ -124,7 +124,7 @@
   }
 
   .monster-bar:not(:first-child) {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   .legend {
