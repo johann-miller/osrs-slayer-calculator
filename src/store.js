@@ -18,7 +18,12 @@ export var Quests = writable([
   {name: 'Cabin Fever', monsters: ['Cave horrors'], toggled: false},
   {name: 'Dragon Slayer', monsters: ['Black dragons', 'Blue dragons', 'Red dragons', 'Bronze dragons', 'Iron dragons', 'Steel dragons', 'Mithril dragons'], toggled: false},
   {name: 'Dragon Slayer II', monsters: ['Adamant dragons', 'Rune dragons'], toggled: false},
-  {name: 'Horror from the Deep', monsters: ['Dagannoths'], toggled: false}
+  {name: 'Horror from the Deep', monsters: ['Dagannoths'], toggled: false},
+  {name: 'Mourning\'s End Part II', monsters: ['Dark beasts'], toggled: false},
+  {name: 'Desert Treasure', monsters: ['Dust devils'], toggled: false},
+  {name: 'Regicide', monsters: ['Elves'], toggled: false},
+  {name: 'Bone Voyage', monsters: ['Fossil Island wyverns'], toggled: false},
+  {name: 'Contact!', monsters: ['Minions of Scabaras'], toggled: false},
 ])
 
 export const Masters = readable([
@@ -67,6 +72,16 @@ export const InitialPool = readable([
     unlocked: false,
     questCompleted: true,
     image: 'https://oldschool.runescape.wiki/images/thumb/4/4f/Ankou.png/110px-Ankou.png?efca0'
+  },
+  {
+    name: 'Aviansies',
+    onList: [true, true, true],
+    weight: [9, 9, 9],
+    slayerLevel: 1,
+    blocked: true,
+    unlocked: true,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/e/ec/Aviansie_%28level_69%29.png/230px-Aviansie_%28level_69%29.png?bc4a8'
   },
   {
     name: 'Black demons',
@@ -149,6 +164,16 @@ export const InitialPool = readable([
     image: 'https://oldschool.runescape.wiki/images/thumb/5/5b/Cave_horror_%281%29.png/240px-Cave_horror_%281%29.png?a57e4'
   },
   {
+    name: 'Cave kraken',
+    onList: [true, true, true],
+    weight: [9, 9, 6],
+    slayerLevel: 87,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/d/dc/Cave_kraken.png/290px-Cave_kraken.png?4612a'
+  },
+  {
     name: 'Dagannoths',
     onList: [true, true, true],
     weight: [9, 8, 8],
@@ -159,24 +184,44 @@ export const InitialPool = readable([
     image: 'https://oldschool.runescape.wiki/images/thumb/b/bb/Dagannoth.png/300px-Dagannoth.png?81f00'
   },
   {
-    name: 'TzHaar',
-    onList: [true, false, true],
-    weight: [12, 0, 9],
-    slayerLevel: 1,
-    blocked: true,
-    unlocked: true,
-    questCompleted: true,
-    image: 'https://oldschool.runescape.wiki/images/thumb/6/6c/TzHaar-Ket.png/120px-TzHaar-Ket.png?ee1fa'
+    name: 'Dark beasts',
+    onList: [true, true, true],
+    weight: [11, 5, 5],
+    slayerLevel: 90,
+    blocked: false,
+    unlocked: false,
+    questCompleted: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/e/e1/Dark_beast.png/290px-Dark_beast.png?81f00'
   },
   {
-    name: 'Cave kraken',
+    name: 'Drakes',
     onList: [true, true, true],
-    weight: [9, 9, 6],
-    slayerLevel: 87,
+    weight: [8, 10, 7],
+    slayerLevel: 84,
     blocked: false,
     unlocked: false,
     questCompleted: true,
-    image: 'https://oldschool.runescape.wiki/images/thumb/d/dc/Cave_kraken.png/290px-Cave_kraken.png?4612a'
+    image: 'https://oldschool.runescape.wiki/images/thumb/d/da/Drake.png/280px-Drake.png?71620'
+  },
+  {
+    name: 'Dust devils',
+    onList: [true, true, true],
+    weight: [5, 6, 6],
+    slayerLevel: 65,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/5/5e/Dust_devil.png/140px-Dust_devil.png?88631'
+  },
+  {
+    name: 'Elves',
+    onList: [true, false, true],
+    weight: [4, 0, 4],
+    slayerLevel: 1,
+    blocked: false,
+    unlocked: false,
+    questCompleted: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/c/ce/Elf_Warrior_%281%29.png/130px-Elf_Warrior_%281%29.png?7a1ed'
   },
   {
     name: 'Fire giants',
@@ -189,14 +234,75 @@ export const InitialPool = readable([
     image: 'https://oldschool.runescape.wiki/images/thumb/1/16/Fire_giant.png/120px-Fire_giant.png?30592'
   },
   {
-    name: 'Wyrms',
+    name: 'Fossil Island wyverns',
     onList: [true, true, true],
-    weight: [8, 10, 7],
-    slayerLevel: 62,
+    weight: [5, 5, 5],
+    slayerLevel: 66,
+    blocked: false,
+    unlocked: false,
+    questCompleted: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/2/22/Spitting_Wyvern.png/250px-Spitting_Wyvern.png?aaf11'
+  },
+  {
+    name: 'Gargoyles',
+    onList: [true, true, true],
+    weight: [8, 6, 6],
+    slayerLevel: 75,
+    blocked: false,
+    unlocked: false,
+    questCompleted: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/4/44/Gargoyle.png/250px-Gargoyle.png?b7dd7'
+  },
+  {
+    name: 'Greater demons',
+    onList: [true, true, true],
+    weight: [9, 7, 6],
+    slayerLevel: 1,
     blocked: false,
     unlocked: false,
     questCompleted: true,
-    image: 'https://oldschool.runescape.wiki/images/thumb/1/1a/Wyrm.png/250px-Wyrm.png?27909'},
+    image: 'https://oldschool.runescape.wiki/images/thumb/5/56/Greater_demon.png/250px-Greater_demon.png?f293e'
+  },
+  {
+    name: 'Hell hounds',
+    onList: [true, true, true],
+    weight: [10, 8, 8],
+    slayerLevel: 1,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/3/3e/Hellhound.png/200px-Hellhound.png?0e2a9'
+  },
+  {
+    name: 'Hydras',
+    onList: [false, true, false],
+    weight: [0, 10, 0],
+    slayerLevel: 95,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/9/9d/Hydra.png/220px-Hydra.png?9572f'
+  },
+  {
+    name: 'Iron dragons',
+    onList: [true, true, true],
+    weight: [5, 5, 5],
+    slayerLevel: 1,
+    blocked: false,
+    unlocked: false,
+    questCompleted: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/4/41/Iron_dragon.png/280px-Iron_dragon.png?5b7f9'
+  },
+  {
+    name: 'Jellies',
+    onList: [false, true, false],
+    weight: [0, 6, 0],
+    slayerLevel: 52,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/0/05/Jelly.png/250px-Jelly.png?28a08'
+  },
   {
     name: 'Kalphites',
     onList: [true, true, true],
@@ -208,25 +314,104 @@ export const InitialPool = readable([
     image: 'https://oldschool.runescape.wiki/images/thumb/e/e9/Kalphite_Soldier.png/250px-Kalphite_Soldier.png?33258'
   },
   {
-    name: 'Aviansies',
+    name: 'Kurasks',
     onList: [true, true, true],
-    weight: [9, 9, 9],
+    weight: [4, 3, 3],
+    slayerLevel: 70,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/7/77/Kurask.png/250px-Kurask.png?d25f0'
+  },
+  {
+    name: 'Lizardmen',
+    onList: [true, true, true],
+    weight: [10, 8, 8],
     slayerLevel: 1,
     blocked: true,
     unlocked: true,
     questCompleted: true,
-    image: 'https://oldschool.runescape.wiki/images/thumb/e/ec/Aviansie_%28level_69%29.png/230px-Aviansie_%28level_69%29.png?bc4a8'
+    image: 'https://oldschool.runescape.wiki/images/thumb/8/82/Lizardman_%28level_53%29.png/200px-Lizardman_%28level_53%29.png?71082'
   },
   {
-    name: 'Gargoyles',
-    onList: [true, true, true],
-    weight: [8, 6, 6],
-    slayerLevel: 77,
+    name: 'Minions of Scabaras',
+    onList: [false, false, true],
+    weight: [0, 0, 4],
+    slayerLevel: 1,
     blocked: false,
     unlocked: false,
     questCompleted: false,
-    image: 'https://oldschool.runescape.wiki/images/thumb/4/44/Gargoyle.png/250px-Gargoyle.png?b7dd7'
+    image: 'https://oldschool.runescape.wiki/images/thumb/0/01/Locust_rider_%28ranged%29.png/250px-Locust_rider_%28ranged%29.png?46392'
   },
+  {
+    name: 'Mithril dragons',
+    onList: [true, true, true],
+    weight: [9, 5, 5],
+    slayerLevel: 1,
+    blocked: true,
+    unlocked: true,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/9/94/Mithril_dragon.png/280px-Mithril_dragon.png?956ac'
+  },
+  {
+    name: 'Mutated zygomites',
+    onList: [true, true, true],
+    weight: [2, 2, 2],
+    slayerLevel: 57,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/f/ff/Zygomite_%28level_74%29.png/200px-Zygomite_%28level_74%29.png?ea620'
+  },
+  {
+    name: 'Nechryael',
+    onList: [true, true, true],
+    weight: [9, 7, 7],
+    slayerLevel: 80,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/0/00/Nechryael.png/145px-Nechryael.png?d80e7'
+  },
+  {
+    name: 'Red dragons',
+    onList: [true, true, true],
+    weight: [8, 5, 5],
+    slayerLevel: 1,
+    blocked: false,
+    unlocked: false,
+    questCompleted: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/6/6a/Red_dragon.png/290px-Red_dragon.png?f0a8a'
+  },
+  {
+    name: 'Rune dragons',
+    onList: [true, true, true],
+    weight: [2, 5, 2],
+    slayerLevel: 1,
+    blocked: false,
+    unlocked: false,
+    questCompleted: false,
+    image: 'https://oldschool.runescape.wiki/images/thumb/9/96/Rune_dragon.png/280px-Rune_dragon.png?90f09'
+  },
+  {
+    name: 'TzHaar',
+    onList: [true, false, true],
+    weight: [12, 0, 9],
+    slayerLevel: 1,
+    blocked: true,
+    unlocked: true,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/6/6c/TzHaar-Ket.png/120px-TzHaar-Ket.png?ee1fa'
+  },
+  {
+    name: 'Wyrms',
+    onList: [true, true, true],
+    weight: [8, 10, 7],
+    slayerLevel: 62,
+    blocked: false,
+    unlocked: false,
+    questCompleted: true,
+    image: 'https://oldschool.runescape.wiki/images/thumb/1/1a/Wyrm.png/250px-Wyrm.png?27909'},
 ])
 
 export let Pool = writable([
