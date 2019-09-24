@@ -53,9 +53,9 @@
 		max-width: 20rem;
 	}
 
-	.monster-icons > li {
+	.monster-icons > li, .quest-icons > li {
 		width: 100%;
-		margin: 0.5rem;
+		margin-bottom: 0.3rem;
 	}
 
 	form, .slayer-masters {
@@ -126,11 +126,6 @@
 	.quest-icons {
 		width: 100%;
 		max-width: 20rem;
-	}
-
-	.quest-icons > li {
-		width: 100%;
-		margin: 0.5rem;
 	}
 
 	.results {

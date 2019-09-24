@@ -62,13 +62,11 @@
     position: relative;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 		position: relative;
-		padding: 1rem;
-    margin: 0.5rem 0;
+		padding: 0.5rem 1rem;
     width: 100%;
 
-		text-align: center;
 		background: #fafafa;
 		border: 1px #e7e7e7 solid;
 		border-radius: 0.3rem;
@@ -93,7 +91,7 @@
   .check-mark {
     position: absolute;
     margin: auto 0;
-    left: 1rem;
+    right: 1rem;
     height: 1.5rem;
     width: auto;
   }

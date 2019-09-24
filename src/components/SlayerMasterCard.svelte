@@ -106,6 +106,7 @@
     flex-flow: column;
     align-items: center;
     width: 100%;
+    max-width: 20rem;
   }
 
   .monster-bar {
@@ -116,7 +117,6 @@
     
     border-bottom: 1px #e7e7e7 solid;
     width: 100%;
-    max-width: 25rem;
   }
 
   .monster-bar span {
