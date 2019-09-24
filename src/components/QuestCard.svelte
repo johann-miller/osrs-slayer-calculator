@@ -1,10 +1,12 @@
 <script>
+	import { onMount } from 'svelte'
 	import {Pool, InitialPool} from '../store'
 	export let quest
 	export let toggled
 
 	function toggle() {
 		toggled = !toggled
+		localStorage.setItem(quest.name, JSON.stringify(toggled))
 		
 		update()
 	}
@@ -28,6 +30,18 @@
 			})
 		})
 	}
+
+	onMount(() => {
+		let savedQuest = localStorage.getItem(quest.name)
+		savedQuest = JSON.parse(savedQuest)
+
+		if (typeof savedQuest == 'undefined' || savedQuest === null) {
+			localStorage.setItem(quest.name, JSON.stringify(toggled))
+		} else {
+			toggled = savedQuest
+			update()
+		}
+	})
 </script>
 
 <style>

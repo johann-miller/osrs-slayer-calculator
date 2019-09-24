@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte'
 	import {SlayerLevel, UnlockMonsters, Quests, InitialPool} from '../store.js'
 	import MonsterCard from '../components/MonsterCard.svelte'
 	import QuestCard from '../components/QuestCard.svelte'
@@ -23,16 +24,29 @@
 	}
 
 	function updateSlayerLevel() {
+		localStorage.setItem('slayerLevel', JSON.stringify(slayerLevel))
 		SlayerLevel.update(() => {
 			return slayerLevel
 		})
 	}
+
+	onMount(() => {
+		let savedSlayerLevel = localStorage.getItem('slayerLevel')
+		savedSlayerLevel = JSON.parse(savedSlayerLevel)
+
+		if (typeof savedSlayerLevel == 'undefined' || savedSlayerLevel === null) {
+			localStorage.setItem('slayerLevel', JSON.stringify(slayerLevel))
+		} else {
+			slayerLevel = savedSlayerLevel
+			updateSlayerLevel()
+		}
+	})
 </script>
 
 <style>
 	.monster-icons {
 		display: flex;
-		flex-flow: row-;
+		flex-flow: row;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
@@ -61,8 +75,7 @@
 	}
 
 	header {
-		/*display: flex;*/
-		display: none;
+		display: flex;
 		flex-flow: column;
 		align-items: center;
 		max-width: 40rem;

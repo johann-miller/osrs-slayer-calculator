@@ -14,6 +14,7 @@
 
 	function toggle() {
 		toggled = !toggled
+		localStorage.setItem(monster.name, JSON.stringify(toggled))
 		
 		update()
 	}
@@ -46,11 +47,11 @@
 		let savedMonster = localStorage.getItem(monster.name)
 		savedMonster = JSON.parse(savedMonster)
 
-		if (savedMonster) {
-			console.log(monster.name + ' exitst: ')
-			console.log(savedMonster)
+		if (typeof savedMonster == 'undefined' || savedMonster === null) {
+			localStorage.setItem(monster.name, JSON.stringify(toggled))
 		} else {
-			console.log
+			toggled = savedMonster
+			update()
 		}
 	})
 
